@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
-    <title>三日預報</title>
+    <link rel="stylesheet" href="css/week.css">
+    <title>一週預報</title>
 </head>
 
 <body>
@@ -47,9 +47,58 @@
     </button>
 
     <section class="section section-week">
-
-
-        <!-- content here -->
+        <table>
+            <tr>
+                <th id="city"></td>
+                <th class="D"></td>
+                <th class="D"></td>
+                <th class="D"></td>
+                <th class="D"></td>
+                <th class="D"></td>
+                <th class="D"></td>
+                <th class="D"></td>
+            </tr>
+            <tr>
+                <td>白天</td>
+                <td id="WeatherTemp1"></td>
+                <td id="WeatherTemp3"></td>
+                <td id="WeatherTemp5"></td>
+                <td id="WeatherTemp7"></td>
+                <td id="WeatherTemp9"></td>
+                <td id="WeatherTemp11"></td>
+                <td id="WeatherTemp13"></td>
+            </tr>
+            <tr>
+                <td>晚上</td>
+                <td id="WeatherTemp2"></td>
+                <td id="WeatherTemp4"></td>
+                <td id="WeatherTemp6"></td>
+                <td id="WeatherTemp8"></td>
+                <td id="WeatherTemp10"></td>
+                <td id="WeatherTemp12"></td>
+                <td id="WeatherTemp14"></td>
+            </tr>
+            <tr>
+                <td>降雨機率</td>
+                <td id="PoP1"></td>
+                <td id="PoP3"></td>
+                <td id="PoP5"></td>
+                <td id="PoP7"></td>
+                <td id="PoP9"></td>
+                <td id="PoP11"></td>
+                <td id="PoP13"></td>
+            </tr>
+            <tr>
+                <td>紫外線</td>
+                <td id="UVI1"></td>
+                <td id="UVI2"></td>
+                <td id="UVI3"></td>
+                <td id="UVI4"></td>
+                <td id="UVI5"></td>
+                <td id="UVI6"></td>
+                <td id="UVI7"></td>
+            </tr>
+        </table>
 
 
 
@@ -61,7 +110,7 @@
     <div class="fill-footer"></div>
 
     <script src="js/base.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/week.js"></script>
 </body>
 
 </html>

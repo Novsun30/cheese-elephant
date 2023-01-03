@@ -1,5 +1,24 @@
 /* 一週統計 */
 
+section > table {
+    text-align: center;
+    width: 100%;
+    height: 300px;
+    border-collapse: collapse;
+}
+
+td, th{
+    border: 1px dashed #f2c186;
+}
+
+section > table > tbody > tr > .D {
+    white-space: pre;
+}
+
+
+section > table > tbody > tr > td > .weather_icon {
+    width: 40px;height: 40px;
+}
 
 @media screen and (max-width:1200px) {}
 
