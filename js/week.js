@@ -55,12 +55,27 @@ async function getWeekdata(url){
         weather_icon.className = "weather_icon";
         let weather_icon_url = "https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/";
         let weather = weatherElements[6].time[i].elementValue[1].value;
+
+        let minT = document.createElement("span");
+        minT.textContent = weatherElements[8].time[i].elementValue[0].value;
+        minT.style.color = "blue";
+
+        let maxT = document.createElement("span");
+        maxT.textContent = weatherElements[12].time[i].elementValue[0].value;
+        minT.style.color = "red";
+
+        let temp_range = minT + " - " + maxT;
+        let temp_box = document.getElementById("temp_box" + i.toString());
         if(i % 2 !== 0){
             weather_icon.src = weather_icon_url + "day/" + weather + ".svg";
-            document.getElementById("WeatherTemp" + i.toString()).appendChild(weather_icon);
+            temp_box.parentNode.insertBefore(weather_icon, temp_box);
+            document.getElementById("temp_box" + i.toString()).appendChild(temp_range);
         } else {
             weather_icon.src = weather_icon_url + "night/" + weather + ".svg";
-            document.getElementById("WeatherTemp" + i.toString()).appendChild(weather_icon);
+            temp_box = document.getElementById("temp_box" + i.toString());
+            temp_box.parentNode.insertBefore(weather_icon, temp_box);
+            document.getElementById("temp_box" + i.toString()).appendChild(temp_range);
+            
         }
     }
 
