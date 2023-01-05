@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/week.css">
     <title>一週預報</title>
 </head>
-
 <body>
     <header class="header">
         <div class="header-logo">
@@ -47,6 +46,10 @@
     </button>
 
     <section class="section section-week">
+        <div class="option_list">
+            <div id="week_weather" class="option active" style="margin-right: 5px;">一週天氣預報</div>
+            <div id="week_temp" class="option">一週溫度趨勢</div>
+        </div>
         <table>
             <tr>
                 <th><div id="city" class="cell"></div></th>
@@ -156,6 +159,7 @@
             </tr>
         </table>
 
+        <canvas id="temp_chart" class="chart hide"></canvas>
 
 
     </section>
@@ -166,6 +170,15 @@
     <div class="fill-footer"></div>
 
     <script src="js/base.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.querySelector(".header-search-btn").addEventListener("click", () => {
+            let chartStatus = Chart.getChart("temp_chart");
+            if(chartStatus != undefined){
+                chartStatus.destroy()
+            }
+        })
+    </script>
     <script src="js/week.js"></script>
 </body>
 

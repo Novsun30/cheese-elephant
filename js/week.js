@@ -11,7 +11,6 @@
 
 //weather_icon: https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/{day/night}/07.svg
 
-
 const city_dict = {
     "新竹縣" : "0", "金門縣" : "1", "苗栗縣" : "2", "新北市" : "3", "宜蘭縣" : "4", "雲林縣" : "5", "臺南市" : "6", "高雄市" : "7", "彰化縣" : "8", "臺北市" : "9", "南投縣" : "10", "澎湖縣" : "11", "基隆市" : "12", "桃園市" : "13", "花蓮縣" : "14", "連江縣" : "15", "臺東縣" : "16", "嘉義市" : "17", "嘉義縣" : "18", "屏東縣" : "19", "臺中市" : "20", "新竹市" : "21" 
 };
@@ -22,16 +21,13 @@ getWeekdata(url_week, city_dict["臺北市"]);
 
 let search_btn = document.querySelector(".header-search-btn");
 search_btn.addEventListener("click", () => {
-    document.getElementsByTagName("section")[0].innerHTML = "";
-    let table = document.createElement("table");
-    table.id = "table";
-    document.getElementsByTagName("section")[0].appendChild(table);
-
+    document.getElementsByTagName("table")[0].innerHTML = "";
+    document.getElementById("temp_chart").innerHTML = "";
     // create row
     for(let i=0; i<5; i++){
         let row = document.createElement("tr");
         row.id = "row" + (i+1).toString();
-        document.getElementById(table.id).appendChild(row);
+        document.getElementsByTagName("table")[0].appendChild(row);
     }
 
     // row_data
@@ -73,13 +69,13 @@ search_btn.addEventListener("click", () => {
             document.getElementById(r2c.id).appendChild(r2_cell);
 
             r3_cell.textContent = "晚上";
-            document.getElementById(r2c.id).appendChild(r3_cell);
+            document.getElementById(r3c.id).appendChild(r3_cell);
 
             r4_cell.textContent = "降雨機率";
-            document.getElementById(r2c.id).appendChild(r4_cell);
+            document.getElementById(r4c.id).appendChild(r4_cell);
             
             r5_cell.textContent = "紫外線";
-            document.getElementById(r2c.id).appendChild(r5_cell);
+            document.getElementById(r5c.id).appendChild(r5_cell);
         } else {
             head_cell.classList.add("D");
             document.getElementById(head.id).appendChild(head_cell);
@@ -105,7 +101,7 @@ search_btn.addEventListener("click", () => {
             document.getElementById(r3_cell.id).appendChild(r3_temp_box);
             r3_index += 2;
 
-            r5c.id = "UVI" + i.toString();
+            r5_cell.id = "UVI" + i.toString();
             document.getElementById(r5c.id).appendChild(r5_cell);
         }
     }
@@ -120,7 +116,6 @@ async function getWeekdata(url, city_code){
     let data = await response.json();
     let city = data.records.locations[0].location[city_code];
     let weatherElements = city.weatherElement;
-    console.log(weatherElements);
     let times = weatherElements[9].time;
     const weekdays = ["Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun."];
     document.getElementById("city").textContent = city.locationName;
@@ -128,11 +123,10 @@ async function getWeekdata(url, city_code){
     let Ds = document.querySelectorAll(".D");
     let pop_index = 1;
     for(let i=0; i<7; i++){
-        D_all = new Date(times[i].startTime);
-        D_month = D_all.getMonth() + 1;
-
-        D_date = D_all.getDate();
-        D_day = weekdays[D_all.getDay()];
+        let D_all = new Date(times[i].startTime);
+        let D_month = D_all.getMonth() + 1;
+        let D_date = D_all.getDate();
+        let D_day = weekdays[D_all.getDay()];
         Ds[i].textContent = D_month + " / " + D_date + "\n" + D_day;
 
         
@@ -152,6 +146,10 @@ async function getWeekdata(url, city_code){
 
     }
     
+
+    let minT_list = [];
+    let maxT_list = [];
+    let time_list = [];
     for(let i=1; i<15; i++){
         let weather_icon = document.createElement("img");
         weather_icon.className = "weather_icon";
@@ -163,14 +161,14 @@ async function getWeekdata(url, city_code){
         minT.style.color = "blue";
         
         let dash = document.createElement("span");
-        dash.textContent = " - " ;
+        dash.textContent = "-" ;
 
         let maxT = document.createElement("span");
         maxT.textContent = weatherElements[12].time[i].elementValue[0].value;
         maxT.style.color = "red";
 
         let degree = document.createElement("span");
-        degree.textContent = " °C" ;
+        degree.textContent = "°C" ;
 
         let temp_box = document.getElementById("temp_box" + i.toString());
         if(i % 2 !== 0){
@@ -189,7 +187,71 @@ async function getWeekdata(url, city_code){
             document.getElementById("temp_box" + i.toString()).appendChild(degree);
             
         }
+
+        let D_all = new Date(weatherElements[8].time[i].startTime);
+        let D_month = D_all.getMonth() + 1;
+        let D_date = D_all.getDate();
+        time_list.push(D_month + "/" + D_date)
+        minT_list.push(parseInt(weatherElements[8].time[i].elementValue[0].value));
+        maxT_list.push(parseInt(weatherElements[12].time[i].elementValue[0].value));  
     }
 
+    let ctx = document.getElementById("temp_chart").getContext("2d");
+    let chart = new Chart(ctx, {
+        type : "line",
+        data : {
+            labels : time_list,
+            datasets : [{
+                label : "Min_Temperature",
+                data : minT_list,
+                fill : false,
+                borderColor : "skyblue"
+            } , {
+                label : "Max_Temperature",
+                data : maxT_list,
+                fill : false,
+                borderColor : "#FFD495"
+            }]
+        },
+        options : {
+            scales : {
+                
+                x : {
+                    ticks : {
+                        callback: function(val,index){
+                            return index % 2 === 0 ? this.getLabelForValue(val) : "";
+                        }
+                    }
+                },
+
+                y : {
+                    suggestedMin : 10,
+                    suggestedMax : 30
+                }
+            },
+            elements : {
+                line : {
+                    tension : 0.3
+                }
+            }
+        }
+    });
 }
 
+let week_weather = document.getElementById("week_weather");
+let week_temp = document.getElementById("week_temp");
+week_weather.addEventListener("click", () => {
+    week_weather.classList.add("active");
+    week_temp.classList.remove("active");
+
+    document.getElementById("temp_chart").classList.add("hide");
+    document.getElementsByTagName("table")[0].classList.remove("hide");
+})
+
+week_temp.addEventListener("click", () => {
+    week_weather.classList.remove("active");
+    week_temp.classList.add("active");
+
+    document.getElementById("temp_chart").classList.remove("hide");
+    document.getElementsByTagName("table")[0].classList.add("hide");
+})

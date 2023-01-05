@@ -1,13 +1,43 @@
 /* 一週統計 */
 
+section > .option_list{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-radius: 3px;
+}
+
+section > .option_list > .option{
+    border: 1px solid var(--header-bg-color);
+    width: 300px;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+section > .option_list > .option:hover{
+    background-color: var(--header-bg-color);
+    color: white;
+}
+
+
 section > table {
+    margin-top: 30px;
     text-align: center;
     width: 100%;
-    height: 300px;
+    height: 450px;
     border-collapse: collapse;
 }
 
-td, th{
+th{
+    background-color: #f2c186;
+    color: rgb(255, 255, 255);
+    border: 1px dashed white;
+    
+}
+
+td{
     border: 1px dashed #f2c186;
 }
 
@@ -17,7 +47,13 @@ td, th{
 
 
 .weather_icon {
-    width: 40px;height: 40px;
+    width: 50px;height: 50px;
+}
+
+.chart{
+    width: 100%;
+    height: 450px;
+    margin-top: 30px;
 }
 
 @media screen and (max-width:1200px) {}
@@ -43,8 +79,11 @@ td, th{
         justify-content: center;
         flex-direction: column;
     }
+    
+    .weather_icon{width:40px;height: 40px;}
 }
 
-@media screen and (max-width:600px) {}
-
-@media screen and (max-width:360px) {}
+@media screen and (max-width:600px) {
+    .weather_icon{width: 30px;height: 30px;}
+    section > table{font-size: 14px;}
+}
