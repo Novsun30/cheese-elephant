@@ -1,10 +1,88 @@
 /* 災害警報 */
+table{
+    border-spacing: 8px;
+}
 
+td{
+    border-radius: 15px;
+    padding: 10px;
+}
 
-@media screen and (max-width:1200px) {}
+.section-warning{
+    display: flex;
+}
 
-@media screen and (max-width:900px) {}
+.mapcontainer{
+    width: 50%;
 
-@media screen and (max-width:600px) {}
+}
+
+.tablecontainer{
+    margin-left: 15px;
+    width: 100%;
+    text-align: center;
+
+}
+
+.earthquakebar{
+    background-color: #F1A661;
+    color: #FFFFFF;  
+}
+
+.earthquakecontent{
+    line-height: 16px;
+    color:#94b166;
+    background-color: #FFFFFF;
+}
+
+.earthquakeitem{
+    width: 25%;
+}
+
+.earthquakedetail{
+    text-align: start;
+    position: relative;
+}
+
+#level{
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    padding: 18px 0 18px 22px;
+    position: absolute;
+    left: 25%;
+    bottom:30%;
+}
+
+#map {
+    height: 80vh;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width:1200px) {
+
+}
+
+@media screen and (max-width:900px) {
+    .section-warning{
+        display: block;
+    }
+    .mapcontainer{
+        width: 100%;
+        margin: 15px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    #level{
+        padding: 5px;
+        position:static;
+    }
+    #map {
+        height: 70vh;
+    }
+}
 
 @media screen and (max-width:360px) {}
