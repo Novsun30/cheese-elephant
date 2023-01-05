@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/warning.css">
     <title>三日預報</title>
 </head>
 
@@ -47,12 +48,18 @@
     </button>
 
     <section class="section section-warning">
-
-
-        <!-- content here -->
-
-
-
+        <div class="mapcontainer">
+            <div id="map"></div>
+        </div>
+        <div class="tablecontainer">
+            <table class="earthquaketable">
+                <tr class="earthquakebar">
+                    <td class="earthquakeitem">時間</td>
+                    <td class="earthquakeitem">最大震度</td>
+                    <td >詳細資訊</td>
+                </tr>
+            </table>
+        </div>
     </section>
 
     <footer class="footer">
@@ -62,6 +69,9 @@
 
     <script src="js/base.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/warning.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByxwGLSNEMuTS44CdMswPdg1iBMwJyXlA&callback=initMap"
+        async defer></script>
 </body>
 
 </html>
