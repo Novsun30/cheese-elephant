@@ -41,6 +41,7 @@ td, th{
         align-items: center;
         height: 100%;
         justify-content: center;
+        flex-direction: column;
     }
 }
 

@@ -33,99 +33,82 @@ search_btn.addEventListener("click", () => {
         row.id = "row" + (i+1).toString();
         document.getElementById(table.id).appendChild(row);
     }
-    // let row1 = document.createElement("tr");
-    // row1.id = "row1"
-    // let row2 = document.createElement("tr");
-    // row2.id = "row2"
-    // let row3 = document.createElement("tr");
-    // row3.id = "row3"
-    // let row4 = document.createElement("tr");
-    // row4.id = "row4"
-    // let row5 = document.createElement("tr");
-    // row5.id = "row5"
-    
-    // document.getElementById(table.id).appendChild(row2);
-    // document.getElementById(table.id).appendChild(row3);
-    // document.getElementById(table.id).appendChild(row4);
-    // document.getElementById(table.id).appendChild(row5);
 
     // row_data
     let r24_index = 1;
     let r3_index = 2;
     for(let i=0; i<8; i++){
         let head = document.createElement("th");
+        head.id = "head" + (i+1).toString();
+        document.getElementById(row1.id).appendChild(head);
         let r2c = document.createElement("td");
+        r2c.id = "r2c" + (i+1).toString();
+        document.getElementById(row2.id).appendChild(r2c);
         let r3c = document.createElement("td");
+        r3c.id = "r3c" + (i+1).toString();
+        document.getElementById(row3.id).appendChild(r3c);
         let r4c = document.createElement("td");
+        r4c.id = "r4c" + (i+1).toString();
+        document.getElementById(row4.id).appendChild(r4c);
         let r5c = document.createElement("td");
+        r5c.id = "r5c" + (i+1).toString();
+        document.getElementById(row5.id).appendChild(r5c);
+
+        let head_cell = document.createElement("div");
+        head_cell.className = "cell";
+        let r2_cell = document.createElement("div");
+        r2_cell.className = "cell";
+        let r3_cell = document.createElement("div");
+        r3_cell.className = "cell";
+        let r4_cell = document.createElement("div");
+        r4_cell.className = "cell";
+        let r5_cell = document.createElement("div");
+        r5_cell.className = "cell";
+
         if(i == 0){
-            head.id = "city";
-            document.getElementById(row1.id).appendChild(head);
+            head_cell.id = "city";
+            document.getElementById(head.id).appendChild(head_cell);
 
-            r2c.textContent = "白天";
-            document.getElementById(row2.id).appendChild(r2c);
+            r2_cell.textContent = "白天";
+            document.getElementById(r2c.id).appendChild(r2_cell);
 
-            r3c.textContent = "晚上";
-            document.getElementById(row3.id).appendChild(r3c);
+            r3_cell.textContent = "晚上";
+            document.getElementById(r2c.id).appendChild(r3_cell);
 
-            r4c.textContent = "降雨機率";
-            document.getElementById(row4.id).appendChild(r4c);
+            r4_cell.textContent = "降雨機率";
+            document.getElementById(r2c.id).appendChild(r4_cell);
             
-            r5c.textContent = "紫外線";
-            document.getElementById(row5.id).appendChild(r5c);
+            r5_cell.textContent = "紫外線";
+            document.getElementById(r2c.id).appendChild(r5_cell);
         } else {
-            head.className = "D"
-            document.getElementById(row1.id).appendChild(head);
+            head_cell.classList.add("D");
+            document.getElementById(head.id).appendChild(head_cell);
 
-            r2c.id = "WeatherTemp" + r24_index.toString();
-            document.getElementById(row2.id).appendChild(r2c);
+            r2_cell.id = "WeatherTemp" + r24_index.toString();
+            document.getElementById(r2c.id).appendChild(r2_cell);
 
             let r2_temp_box = document.createElement("div");
             r2_temp_box.id = "temp_box" + r24_index.toString();
             r2_temp_box.className = "temp_box";
-            document.getElementById(r2c.id).appendChild(r2_temp_box);
+            document.getElementById(r2_cell.id).appendChild(r2_temp_box);
             
-            r4c.id = "PoP" + r24_index.toString();
-            document.getElementById(row4.id).appendChild(r4c);
+            r4_cell.id = "PoP" + r24_index.toString();
+            document.getElementById(r4c.id).appendChild(r4_cell);
             r24_index += 2;
 
-            r3c.id = "WeatherTemp" + r3_index.toString();
-            document.getElementById(row3.id).appendChild(r3c);
+            r3_cell.id = "WeatherTemp" + r3_index.toString();
+            document.getElementById(r3c.id).appendChild(r3_cell);
             
             let r3_temp_box = document.createElement("div");
             r3_temp_box.id = "temp_box" + r3_index.toString();
             r3_temp_box.className = "temp_box";
-            document.getElementById(r3c.id).appendChild(r3_temp_box);
+            document.getElementById(r3_cell.id).appendChild(r3_temp_box);
             r3_index += 2;
 
             r5c.id = "UVI" + i.toString();
-            document.getElementById(row5.id).appendChild(r5c);
+            document.getElementById(r5c.id).appendChild(r5_cell);
         }
     }
-    // let head1 = document.createElement("th");
-    // head1.id = "city";
-    // let head2 = document.createElement("th");
-    // head2.className = "D";
-    // let head3 = document.createElement("th");
-    // head3.className = "D";
-    // let head4 = document.createElement("th");
-    // head4.className = "D";
-    // let head5 = document.createElement("th");
-    // head5.className = "D";
-    // let head6 = document.createElement("th");
-    // head6.className = "D";
-    // let head7 = document.createElement("th");
-    // head7.className = "D";
-    // let head8 = document.createElement("th");
-    // head8.className = "D";
-    
-    // document.getElementById(row1.id).appendChild(head2);
-    // document.getElementById(row1.id).appendChild(head3);
-    // document.getElementById(row1.id).appendChild(head4);
-    // document.getElementById(row1.id).appendChild(head5);
-    // document.getElementById(row1.id).appendChild(head6);
-    // document.getElementById(row1.id).appendChild(head7);
-    // document.getElementById(row1.id).appendChild(head8);
 
     city = document.querySelector(".header-search-input").value;
     getWeekdata(url_week, city_dict[city])
