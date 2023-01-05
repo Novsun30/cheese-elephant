@@ -65,7 +65,6 @@ body {
 
 .header-nav {
     height: 50px;
-    width: 356px;
     display: flex;
     align-items: center;
 }
