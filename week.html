@@ -6,28 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
-    <title>三日預報</title>
+    <link rel="stylesheet" href="css/week.css">
+    <title>一週預報</title>
 </head>
 
 <body>
     <header class="header">
         <div class="header-logo">
-            <button class="header-logo-btn">
-                <img src="image/logo.svg" alt="">
-            </button>
+            <a class="header-logo-btn" href="index.html">
+                <img src="image/logo.svg" alt="" />
+            </a>
         </div>
         <div class="header-nav-container">
             <div>
                 <nav class="header-nav">
                     <div class="header-nav-content">
-                        <a class="header-nav-link" href="index.html">首頁</a>
-                        <a class="header-nav-link" href="days.html">三日預報</a>
-                        <a class="header-nav-link active" href="week.html">天氣週報</a>
-                        <a class="header-nav-link" href="warning.html">災害警報</a>
+                        <a class="header-nav-link header-nav-home" href="index.html">首頁</a>
+                        <a class="header-nav-link header-nav-days" href="days.html">三日預報</a>
+                        <a class="header-nav-link header-nav-week active" href="week.html">天氣週報</a>
+                        <a class="header-nav-link header-nav-warning" href="warning.html">災害警報</a>
                     </div>
-                    <button class="header-nav-hamburger">
-                        <img src="image/hamburger.svg" alt="">
+                    <button id="hamburger" class="header-nav-hamburger">
+                        <input type="checkbox" id="menu">
+                        <label for="menu" class="line" onclick="toggleMenu()">
+                            <div class="menu"></div>
+                        </label>
                     </button>
                 </nav>
                 <div class="header-search">
@@ -47,10 +50,175 @@
     </button>
 
     <section class="section section-week">
+        <div class="option_list">
+            <div id="week_name" class="areaname">臺北市</div>
+            <div class="week_btn">
+                <div id="week_weather" class="option active" style="margin-right: 5px;">一週天氣預報</div>
+                <div id="week_temp" class="option">一週溫度趨勢</div>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>
+                    <div id="city" class="cell"></div>
+                </th>
+                <th>
+                    <div class="D cell"></div>
+                </th>
+                <th>
+                    <div class="D cell"></div>
+                </th>
+                <th>
+                    <div class="D cell"></div>
+                </th>
+                <th>
+                    <div class="D cell"></div>
+                </th>
+                <th>
+                    <div class="D cell"></div>
+                </th>
+                <th>
+                    <div class="D cell"></div>
+                </th>
+                <th>
+                    <div class="D cell"></div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cell">白天</div>
+                </td>
+                <td>
+                    <div id="WeatherTemp1" class="cell">
+                        <div id="temp_box1" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp3" class="cell">
+                        <div id="temp_box3" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp5" class="cell">
+                        <div id="temp_box5" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp7" class="cell">
+                        <div id="temp_box7" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp9" class="cell">
+                        <div id="temp_box9" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp11" class="cell">
+                        <div id="temp_box11" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp13" class="cell">
+                        <div id="temp_box13" class="temp_box"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cell">晚上</div>
+                </td>
+                <td>
+                    <div id="WeatherTemp2" class="cell">
+                        <div id="temp_box2" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp4" class="cell">
+                        <div id="temp_box4" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp6" class="cell">
+                        <div id="temp_box6" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp8" class="cell">
+                        <div id="temp_box8" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp10" class="cell">
+                        <div id="temp_box10" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp12" class="cell">
+                        <div id="temp_box12" class="temp_box"></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="WeatherTemp14" class="cell">
+                        <div id="temp_box14" class="temp_box"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cell">降雨機率</div>
+                </td>
+                <td>
+                    <div id="PoP0" class="cell"></div>
+                </td>
+                <td>
+                    <div class="cell" id="PoP1"></div>
+                </td>
+                <td>
+                    <div class="cell" id="PoP2"></div>
+                </td>
+                <td>
+                    <div class="cell" id="PoP3"></div>
+                </td>
+                <td>
+                    <div class="cell" id="PoP4"></div>
+                </td>
+                <td>
+                    <div class="cell" id="PoP5"></div>
+                </td>
+                <td>
+                    <div class="cell" id="PoP6"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cell">紫外線</div>
+                </td>
+                <td>
+                    <div class="cell" id="UVI1"></div>
+                </td>
+                <td>
+                    <div class="cell" id="UVI2"></div>
+                </td>
+                <td>
+                    <div class="cell" id="UVI3"></div>
+                </td>
+                <td>
+                    <div class="cell" id="UVI4"></div>
+                </td>
+                <td>
+                    <div class="cell" id="UVI5"></div>
+                </td>
+                <td>
+                    <div class="cell" id="UVI6"></div>
+                </td>
+                <td>
+                    <div class="cell" id="UVI7"></div>
+                </td>
+            </tr>
+        </table>
 
-
-        <!-- content here -->
-
+        <canvas id="temp_chart" class="chart hide"></canvas>
 
 
     </section>
@@ -61,7 +229,16 @@
     <div class="fill-footer"></div>
 
     <script src="js/base.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.querySelector(".header-search-btn").addEventListener("click", () => {
+            let chartStatus = Chart.getChart("temp_chart");
+            if (chartStatus != undefined) {
+                chartStatus.destroy()
+            }
+        })
+    </script>
+    <script src="js/week.js"></script>
 </body>
 
 </html>

@@ -6,28 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/warning.css">
     <title>三日預報</title>
 </head>
 
 <body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByxwGLSNEMuTS44CdMswPdg1iBMwJyXlA&callback=initMap"
+        async defer></script>
+
     <header class="header">
         <div class="header-logo">
-            <button class="header-logo-btn">
-                <img src="image/logo.svg" alt="">
-            </button>
+            <a class="header-logo-btn" href="index.html">
+                <img src="image/logo.svg" alt="" />
+            </a>
         </div>
         <div class="header-nav-container">
             <div>
                 <nav class="header-nav">
                     <div class="header-nav-content">
-                        <a class="header-nav-link" href="index.html">首頁</a>
-                        <a class="header-nav-link" href="days.html">三日預報</a>
-                        <a class="header-nav-link" href="week.html">天氣週報</a>
-                        <a class="header-nav-link active" href="warning.html">災害警報</a>
+                        <a class="header-nav-link header-nav-home" href="index.html">首頁</a>
+                        <a class="header-nav-link header-nav-days" href="days.html">三日預報</a>
+                        <a class="header-nav-link header-nav-week" href="week.html">天氣週報</a>
+                        <a class="header-nav-link header-nav-warning active" href="warning.html">災害警報</a>
                     </div>
-                    <button class="header-nav-hamburger">
-                        <img src="image/hamburger.svg" alt="">
+                    <button id="hamburger" class="header-nav-hamburger">
+                        <input type="checkbox" id="menu">
+                        <label for="menu" class="line" onclick="toggleMenu()">
+                            <div class="menu"></div>
+                        </label>
                     </button>
                 </nav>
                 <div class="header-search">
@@ -47,12 +53,18 @@
     </button>
 
     <section class="section section-warning">
-
-
-        <!-- content here -->
-
-
-
+        <div class="mapcontainer">
+            <div id="map"></div>
+        </div>
+        <div class="tablecontainer">
+            <table class="earthquaketable">
+                <tr class="earthquakebar">
+                    <td class="earthquakeitem" id="time">時間</td>
+                    <td class="earthquakeitem">最大震度</td>
+                    <td id="detail">詳細資訊</td>
+                </tr>
+            </table>
+        </div>
     </section>
 
     <footer class="footer">
@@ -61,7 +73,9 @@
     <div class="fill-footer"></div>
 
     <script src="js/base.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/warning.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByxwGLSNEMuTS44CdMswPdg1iBMwJyXlA&callback=initMap"></script>
 </body>
 
 </html>

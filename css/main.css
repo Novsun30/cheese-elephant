@@ -1,10 +1,332 @@
 /* 36小時 Home Page */
+.section-index {
+  display: flex;
+  width: auto;
+  position: relative;
+
+}
+
+.card {
+  display: flex;
+  gap: 10px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-arrow {
+  transform: rotate(180deg);
+  margin-right: 10px;
+}
+
+.right-arrow {
+  margin-left: 10px;
+}
+
+.left-arrow,
+.right-arrow {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.div-1 {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  margin: 20px;
+}
+
+.city {
+  font-size: 27px;
+}
+
+.dateis {
+  font-size: 26px;
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+.div-2 {
+  width: 200px;
+  height: 360px;
+  text-align: center;
+  background-color: #fff;
+  padding-top: 10px;
+  border-radius: 15px;
+}
+
+.title {
+  width: 150px;
+  height: 35px;
+  line-height: 35px;
+  color: #fff;
+  background-color: var(--header-bg-color);
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+.today {
+  font-size: 20px;
+}
+
+.pic-div {
+  height: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.temp {
+  font-size: 20px;
+}
+
+.img-div {
+  height: 500px;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+}
 
 
-@media screen and (max-width:1200px) {}
+.btn {
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  width: 100px;
+  height: 36px;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 36px;
+  background: #f1a661;
+  padding-top: 10px 20px 10px 20px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
 
-@media screen and (max-width:900px) {}
 
-@media screen and (max-width:600px) {}
 
-@media screen and (max-width:360px) {}
+#default_map svg {
+  max-width: 100%;
+  width: 448.59px;
+  height: 500px;
+}
+
+#default_map svg a {
+  cursor: pointer;
+}
+
+#default_map svg a.is-active path {
+  fill: var(--header-font-color);
+}
+
+#default_map svg path.area {
+  fill: var(--header-bg-color);
+  stroke: var(--main-bg-color);
+  stroke-width: 1px;
+  stroke-miterlimit: 10;
+  stroke-dashoffset: 0 !important;
+}
+
+.icon-in {
+  fill: #fff;
+  stroke-width: 1px;
+  stroke-miterlimit: 10;
+  stroke-dashoffset: 0 !important;
+}
+
+#position {
+  transition: transform 0.3s;
+}
+
+
+
+#default_map svg path.area:hover,
+.onSelected {
+  fill: var(--main-font-color);
+  transform: translate(-5px, -5px);
+}
+
+
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+
+}
+
+.circle:hover {
+  transform: translate(-3px, -3px);
+}
+
+.circle-1 {
+  right: 145px;
+  top: 0px
+}
+
+.circle-2 {
+  right: 100px;
+  top: -15px
+}
+
+.circle-3 {
+  right: 185px;
+  top: 20px
+}
+
+.circle-4 {
+  right: 220px;
+  top: 50px
+}
+
+.circle-5 {
+  right: 250px;
+  top: 85px;
+}
+
+.circle-6 {
+  right: 270px;
+  top: 125px;
+}
+
+.circle-7 {
+  right: 285px;
+  top: 170px;
+}
+
+.circle-8 {
+  right: 305px;
+  top: 215px;
+}
+
+.circle-9 {
+  right: 315px;
+  top: 260px;
+}
+
+.circle-10 {
+  right: 320px;
+  top: 305px
+}
+
+.circle-11 {
+  right: 310px;
+  top: 350px
+}
+
+.circle-12 {
+  right: 295px;
+  top: 390px
+}
+
+.circle-13 {
+  right: 280px;
+  top: 430px
+}
+
+.circle-14 {
+  right: 250px;
+  top: 470px;
+}
+
+.circle-15 {
+  right: 140px;
+  top: 400px;
+}
+
+.circle-16 {
+  right: 70px;
+  top: 270px;
+}
+
+.circle-17 {
+  right: 50px;
+  top: 210px
+}
+
+.circle-18 {
+  right: 30px;
+  top: 100px;
+}
+
+.circle-19 {
+  right: 30px;
+  top: 25px
+}
+
+.circle-20 {
+  right: 390px;
+  top: 270px;
+}
+
+.circle-21 {
+  right: 350px;
+  top: 185px;
+}
+
+.circle-22 {
+  right: 325px;
+  top: 75px;
+}
+
+
+
+
+.icon {
+  width: 30px;
+  height: 30px;
+  padding-left: 5px;
+  padding-top: 5px;
+
+}
+
+
+
+@media screen and (max-width: 1200px) {
+  .section {
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+
+  .img-div {
+    display: none;
+  }
+}
+
+
+
+@media screen and (max-width: 700px) {
+  .section {
+    margin: auto;
+    margin-bottom: 80px;
+  }
+
+  .div-2 {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+  }
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+
+  .card {
+    display: block;
+    width: 140%;
+
+  }
+}

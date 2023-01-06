@@ -1,10 +1,36 @@
-// Header,Nav and Footer
+// Header, Nav and Footer
 
 const area = {
     "North": ['臺北市', '新北市', '基隆市', '新竹市', '桃園市', '新竹縣', '宜蘭縣'],
     "West": ['臺中市', '苗栗縣', '彰化縣', '南投縣', '雲林縣'],
     "South": ['臺南市', '高雄市', '嘉義市', '嘉義縣', '屏東縣', '澎湖縣'],
     "East": ['臺東縣', '花蓮縣', '金門縣', '連江縣']
+}
+
+//漢堡選單
+const hamburger = document.getElementById("hamburger");
+const navLinkContent = document.getElementsByClassName("header-nav-content")[0];
+const hamburgerPicture = document.getElementById("hamburger-pic");
+
+let detectWidth = true;
+function detectMenu() {
+    if (window.innerWidth <= 600 && detectWidth) {
+        navLinkContent.style.display = "none";
+        detectWidth = false;
+    }
+    if (window.innerWidth > 600) {
+        navLinkContent.style.display = "block";
+        detectWidth = true;
+    }
+}
+setInterval(detectMenu, 30);
+
+function toggleMenu() {
+    if (navLinkContent.style.display != "none") {
+        navLinkContent.style.display = "none";
+    } else {
+        navLinkContent.style.display = "block";
+    }
 }
 
 // 輸入框的地區列表

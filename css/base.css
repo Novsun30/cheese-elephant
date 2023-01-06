@@ -47,12 +47,12 @@ body {
     position: sticky;
     top: 0;
     box-shadow: 0px 0px 20px var(--nav-bg-color);
+    z-index: 1;
 }
 
 .header-nav-container {
     background-color: var(--nav-bg-color);
     height: 50px;
-    z-index: 1;
 }
 
 .header-nav-container>div {
@@ -65,7 +65,6 @@ body {
 
 .header-nav {
     height: 50px;
-    width: 356px;
     display: flex;
     align-items: center;
 }
@@ -154,7 +153,7 @@ body {
     background-color: #fff;
     border-radius: 5px;
     display: flex;
-    z-index: 0;
+    box-shadow: 0px 0px 10px var(--nav-bg-color);
 }
 
 #header-search-list ul {
@@ -191,6 +190,7 @@ body {
     border: 0;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0);
+    z-index: 2;
 }
 
 #top-btn img {
@@ -230,9 +230,12 @@ body {
 
 @media screen and (max-width:1200px) {
 
-    .header,
-    .header-nav-container>div {
+    .header {
         width: 100%;
+    }
+
+    .header-nav-container>div {
+        width: 95%;
     }
 
     .section {
@@ -241,10 +244,6 @@ body {
 }
 
 @media screen and (max-width:900px) {
-    .header-nav-container>div {
-        justify-content: space-around;
-    }
-
     .header-search-input {
         width: 90%;
     }
@@ -259,13 +258,147 @@ body {
     }
 }
 
+@media screen and (max-width:650px) {
+    .header-nav-link {
+        padding: 10px;
+        padding-bottom: 15px;
+    }
+}
+
 @media screen and (max-width:600px) {
+    .header-nav {
+        position: relative;
+    }
+
     .header-nav-content {
-        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px var(--nav-bg-color);
     }
 
     .header-nav-hamburger {
         display: block;
+    }
+
+    .line {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        display: block;
+        padding: 16px;
+        z-index: 2;
+    }
+
+    .line .menu,
+    .line .menu::before,
+    .line .menu::after {
+        background-color: var(--main-font-color);
+        content: '';
+        display: block;
+        height: 1px;
+        position: absolute;
+        transition: ease .3s, top ease .3s .3s, transform ease .3s;
+        width: 20px;
+    }
+
+    .line .menu {
+        left: 18px;
+        top: 27px;
+    }
+
+    .line .menu::before {
+        top: -6px;
+    }
+
+    .line .menu::after {
+        top: 6px;
+    }
+
+    /*
+    點選選單變叉叉
+    */
+    #menu:checked+.line .menu {
+        background: transparent;
+    }
+
+    #menu:checked+.line .menu::before {
+        transform: rotate(45deg);
+    }
+
+    #menu:checked+.line .menu::after {
+        transform: rotate(-45deg);
+    }
+
+    #menu:checked+.line .menu::before,
+    #menu:checked+.line .menu::after {
+        top: 0;
+        transition: top ease .3s, transform ease .3s .3s;
+    }
+
+    /*
+    選單開合
+    */
+    #menu:checked~.menu-list {
+        width: 200px;
+    }
+
+    .menu-list {
+        width: 60px;
+        height: 100vh;
+        background: var(--nav-bg-color);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        padding-top: 60px;
+        position: fixed;
+        z-index: 1;
+        transition: all .6s;
+        overflow: hidden;
+    }
+
+    /*
+    選單向外推
+    */
+    .menu-list ul {
+        list-style: none;
+        margin-left: 70px;
+        padding: 0;
+    }
+
+    .menu-list ul>li {
+        display: block;
+        width: 100px;
+    }
+
+    /*
+    隱藏核許框
+    */
+    input#menu {
+        display: none;
+    }
+
+    .header-nav-link {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        font-weight: 500;
+    }
+
+    .header-nav-link:hover,
+    .header-nav-content .active {
+        font-weight: 700;
+    }
+
+    .header-nav-home {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .header-nav-warning {
+        border-radius: 0 0 10px 10px;
     }
 }
 

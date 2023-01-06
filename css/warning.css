@@ -1,10 +1,113 @@
 /* 災害警報 */
+td {
+    padding: 10px;
+}
 
+.earthquaketime p {
+    font-size: 18px;
+}
+
+.section-warning {
+    display: flex;
+}
+
+.mapcontainer {
+    width: 50%;
+
+}
+
+.tablecontainer {
+    margin-left: 15px;
+    width: 100%;
+    text-align: center;
+    height: 80vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.earthquaketable {
+    width: 100%;
+}
+
+.earthquakebar {
+    background-color: #F1A661;
+    color: #FFFFFF;
+}
+
+.earthquakecontent {
+    line-height: 16px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.earthquakeitem {
+    width: 25%;
+}
+
+.earthquakedetail {
+    text-align: start;
+    position: relative;
+}
+
+.earthquakedetail p {
+    line-height: 150%;
+    margin: 5px;
+}
+
+#level {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#map {
+    height: 80vh;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#time {
+    border-radius: 15px 0px 0px 0px;
+}
+
+#detail {
+    border-radius: 0px 15px 0px 0px;
+}
 
 @media screen and (max-width:1200px) {}
 
-@media screen and (max-width:900px) {}
+@media screen and (max-width:900px) {
+    .section-warning {
+        display: block;
+    }
 
-@media screen and (max-width:600px) {}
+    .mapcontainer {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .tablecontainer {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        overflow: visible;
+        height: auto;
+    }
+}
+
+@media screen and (max-width:600px) {
+    td {
+        padding: 5px;
+    }
+
+    #level {
+        padding: 5px;
+        position: static;
+        font-size: 15px;
+    }
+
+    #map {
+        height: 70vh;
+    }
+}
 
 @media screen and (max-width:360px) {}
