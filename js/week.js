@@ -31,7 +31,7 @@ search_btn.addEventListener("click", () => {
     }
 
     // row_data
-    let r24_index = 1;
+    let r2_index = 1;
     let r3_index = 2;
     for(let i=0; i<8; i++){
         let head = document.createElement("th");
@@ -80,17 +80,14 @@ search_btn.addEventListener("click", () => {
             head_cell.classList.add("D");
             document.getElementById(head.id).appendChild(head_cell);
 
-            r2_cell.id = "WeatherTemp" + r24_index.toString();
+            r2_cell.id = "WeatherTemp" + r2_index.toString();
             document.getElementById(r2c.id).appendChild(r2_cell);
 
             let r2_temp_box = document.createElement("div");
-            r2_temp_box.id = "temp_box" + r24_index.toString();
+            r2_temp_box.id = "temp_box" + r2_index.toString();
             r2_temp_box.className = "temp_box";
             document.getElementById(r2_cell.id).appendChild(r2_temp_box);
-            
-            r4_cell.id = "PoP" + r24_index.toString();
-            document.getElementById(r4c.id).appendChild(r4_cell);
-            r24_index += 2;
+            r2_index += 2;
 
             r3_cell.id = "WeatherTemp" + r3_index.toString();
             document.getElementById(r3c.id).appendChild(r3_cell);
@@ -100,6 +97,9 @@ search_btn.addEventListener("click", () => {
             r3_temp_box.className = "temp_box";
             document.getElementById(r3_cell.id).appendChild(r3_temp_box);
             r3_index += 2;
+
+            r4_cell.id = "PoP" + (i-1).toString();
+            document.getElementById(r4c.id).appendChild(r4_cell);
 
             r5_cell.id = "UVI" + i.toString();
             document.getElementById(r5c.id).appendChild(r5_cell);
@@ -119,9 +119,17 @@ async function getWeekdata(url, city_code){
     let times = weatherElements[9].time;
     const weekdays = ["Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun."];
     document.getElementById("city").textContent = city.locationName;
-    
     let Ds = document.querySelectorAll(".D");
-    let pop_index = 1;
+    let pop_index;
+    let loop_index;
+    if(weatherElements[0].time.length == 14){
+        pop_index = 0;
+        loop_index = 0;
+    } else {
+        pop_index = 1;
+        loop_index = 1;
+    }
+    
     for(let i=0; i<7; i++){
         let D_all = new Date(times[i].startTime);
         let D_month = D_all.getMonth() + 1;
@@ -133,11 +141,11 @@ async function getWeekdata(url, city_code){
         let PoP_day = weatherElements[0].time[pop_index].elementValue[0].value;
         let PoP_night = weatherElements[0].time[pop_index + 1].elementValue[0].value;
         if (parseInt(PoP_day) >= parseInt(PoP_night)){
-            document.getElementById("PoP" + pop_index.toString()).textContent = PoP_day + "%";
+            document.getElementById("PoP" + i.toString()).textContent = PoP_day + "%";
         } else if(PoP_day == " " && PoP_night == " ") {
-            document.getElementById("PoP" + pop_index.toString()).textContent = "--";
+            document.getElementById("PoP" + i.toString()).textContent = "--";
         } else {
-            document.getElementById("PoP" + pop_index.toString()).textContent = PoP_night + "%";
+            document.getElementById("PoP" + i.toString()).textContent = PoP_night + "%";
         }
         pop_index += 2;
         
@@ -150,7 +158,9 @@ async function getWeekdata(url, city_code){
     let minT_list = [];
     let maxT_list = [];
     let time_list = [];
-    for(let i=1; i<15; i++){
+    let temp_box_index = 1;
+    
+    for(let i=loop_index; i<weatherElements[0].time.length; i++){
         let weather_icon = document.createElement("img");
         weather_icon.className = "weather_icon";
         let weather_icon_url = "https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/";
@@ -170,24 +180,25 @@ async function getWeekdata(url, city_code){
         let degree = document.createElement("span");
         degree.textContent = "°C" ;
 
-        let temp_box = document.getElementById("temp_box" + i.toString());
-        if(i % 2 !== 0){
+        
+        let temp_box = document.getElementById("temp_box" + temp_box_index.toString());
+        if(temp_box_index % 2 !== 0){
             weather_icon.src = weather_icon_url + "day/" + weather + ".svg";
             temp_box.parentNode.insertBefore(weather_icon, temp_box);
-            document.getElementById("temp_box" + i.toString()).appendChild(minT);
-            document.getElementById("temp_box" + i.toString()).appendChild(dash);
-            document.getElementById("temp_box" + i.toString()).appendChild(maxT);
-            document.getElementById("temp_box" + i.toString()).appendChild(degree);
+            document.getElementById("temp_box" + temp_box_index.toString()).appendChild(minT);
+            document.getElementById("temp_box" + temp_box_index.toString()).appendChild(dash);
+            document.getElementById("temp_box" + temp_box_index.toString()).appendChild(maxT);
+            document.getElementById("temp_box" + temp_box_index.toString()).appendChild(degree);
         } else {
             weather_icon.src = weather_icon_url + "night/" + weather + ".svg";
             temp_box.parentNode.insertBefore(weather_icon, temp_box);
-            document.getElementById("temp_box" + i.toString()).appendChild(minT);
-            document.getElementById("temp_box" + i.toString()).appendChild(dash);
-            document.getElementById("temp_box" + i.toString()).appendChild(maxT);
-            document.getElementById("temp_box" + i.toString()).appendChild(degree);
+            document.getElementById("temp_box" + temp_box_index.toString()).appendChild(minT);
+            document.getElementById("temp_box" + temp_box_index.toString()).appendChild(dash);
+            document.getElementById("temp_box" + temp_box_index.toString()).appendChild(maxT);
+            document.getElementById("temp_box" + temp_box_index.toString()).appendChild(degree);
             
         }
-
+        temp_box_index += 1;
         let D_all = new Date(weatherElements[8].time[i].startTime);
         let D_month = D_all.getMonth() + 1;
         let D_date = D_all.getDate();
