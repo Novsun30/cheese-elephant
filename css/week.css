@@ -1,13 +1,23 @@
 /* 一週統計 */
 
-section > .option_list{
+.areaname {
+    color: var(--main-font-color);
+    font-size: 35px;
+    font-weight: 700;
+    width: auto;
+    margin-right: 10%;
+}
+
+
+.option_list {
     display: flex;
     justify-content: center;
-    width: 100%;
+    align-items: center;
+    width: 90%;
     border-radius: 3px;
 }
 
-section > .option_list > .option{
+.option {
     border: 1px solid var(--header-bg-color);
     width: 300px;
     font-size: 20px;
@@ -16,13 +26,12 @@ section > .option_list > .option{
     border-radius: 3px;
 }
 
-section > .option_list > .option:hover{
+.option:hover {
     background-color: var(--header-bg-color);
     color: white;
 }
 
-
-section > table {
+table {
     margin-top: 30px;
     text-align: center;
     width: 100%;
@@ -30,14 +39,15 @@ section > table {
     border-collapse: collapse;
 }
 
-th{
+
+th {
     background-color: #f2c186;
     color: rgb(255, 255, 255);
     border: 1px dashed white;
-    
+
 }
 
-td{
+td {
     border: 1px dashed #f2c186;
 }
 
@@ -47,16 +57,21 @@ td{
 
 
 .weather_icon {
-    width: 50px;height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
-.chart{
+.chart {
     width: 100%;
     height: 450px;
     margin-top: 30px;
 }
 
-@media screen and (max-width:1200px) {}
+@media screen and (max-width:1200px) {
+    .option {
+        width: 30%;
+    }
+}
 
 @media screen and (max-width:900px) {
     tr {
@@ -65,25 +80,43 @@ td{
         width: 20%;
     }
 
-    th, td {
+    th,
+    td {
         padding: 0;
         display: block;
         width: 100%;
         height: 90px;
     }
 
-    .cell{
+    .cell {
         display: flex;
         align-items: center;
         height: 100%;
         justify-content: center;
         flex-direction: column;
     }
-    
-    .weather_icon{width:40px;height: 40px;}
+
+    .weather_icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .areaname {
+        margin-right: 5%;
+    }
 }
 
 @media screen and (max-width:600px) {
-    .weather_icon{width: 30px;height: 30px;}
-    section > table{font-size: 14px;}
+    .weather_icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    section>table {
+        font-size: 14px;
+    }
+
+    .areaname {
+        font-size: 25px;
+    }
 }

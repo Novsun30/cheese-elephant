@@ -192,7 +192,7 @@ const dateString = today.toLocaleDateString();
 const regex = /^(\d+).(\d+).(\d+)/;
 const [, year, month, day] = dateString.match(regex);
 
-document.querySelector('.dateis').innerText = `${month}/${day}`;
+document.querySelector('.dateis').innerText = `${year}/${month}/${day}`;
 
 // 座標城市定位
 const gPosition = {

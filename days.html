@@ -13,21 +13,24 @@
 <body>
     <header class="header">
         <div class="header-logo">
-            <button class="header-logo-btn">
-                <img src="image/logo.svg" alt="">
-            </button>
+            <a class="header-logo-btn" href="index.html">
+                <img src="image/logo.svg" alt="" />
+            </a>
         </div>
         <div class="header-nav-container">
             <div>
                 <nav class="header-nav">
                     <div class="header-nav-content">
-                        <a class="header-nav-link" href="index.html">首頁</a>
-                        <a class="header-nav-link active" href="days.html">三日預報</a>
-                        <a class="header-nav-link" href="week.html">天氣週報</a>
-                        <a class="header-nav-link" href="warning.html">災害警報</a>
+                        <a class="header-nav-link header-nav-home" href="index.html">首頁</a>
+                        <a class="header-nav-link header-nav-days active" href="days.html">三日預報</a>
+                        <a class="header-nav-link header-nav-week" href="week.html">天氣週報</a>
+                        <a class="header-nav-link header-nav-warning" href="warning.html">災害警報</a>
                     </div>
-                    <button class="header-nav-hamburger">
-                        <img src="image/hamburger.svg" alt="">
+                    <button id="hamburger" class="header-nav-hamburger">
+                        <input type="checkbox" id="menu">
+                        <label for="menu" class="line" onclick="toggleMenu()">
+                            <div class="menu"></div>
+                        </label>
                     </button>
                 </nav>
                 <div class="header-search">
