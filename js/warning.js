@@ -2,6 +2,7 @@
 let map;
 let position = [];
 let earthquake = [];
+let marker = [];
 
 window.initMap = initMap;
 let url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/E-A0016-001?Authorization=CWB-1E61E837-116F-4D78-88DE-8A6CA81E6EE3&limit=5&sort=sort"
@@ -17,10 +18,22 @@ fetch(url).then(function (response) {
       container.OriginTime = Earthquake[i].EarthquakeInfo.OriginTime;
       let index = Earthquake[i].ReportContent.length - 3;
       let level = Earthquake[i].ReportContent.substring(index, index + 1);
-      container.level = level + "級";
+      let magnitude = Earthquake[i].EarthquakeInfo.EarthquakeMagnitude.MagnitudeValue;
+      if (magnitude >= 6.5 && level >= 6) {
+        container.level = "🔴" + level + "級";
+      }
+      else if (magnitude >= 6.0 && level >= 5) {
+        container.level = "🟠" + level + "級";
+      }
+      else if (magnitude >= 5.5 && level >= 4) {
+        container.level = "🟡" + level + "級";
+      }
+      else {
+        container.level = "🟢" + level + "級";
+      }
       container.locatedetail = "地點：" + Earthquake[i].EarthquakeInfo.Epicenter.Location;
       container.depthdetail = "深度：" + Earthquake[i].EarthquakeInfo.FocalDepth + "km";
-      container.magnitudedetail = Earthquake[i].EarthquakeInfo.EarthquakeMagnitude.MagnitudeValue;
+      container.magnitudedetail = magnitude;
 
       let eqposition = {};
       eqposition.lat = Earthquake[i].EarthquakeInfo.Epicenter.EpicenterLatitude;
@@ -47,10 +60,22 @@ fetch(bigurl).then(function (response) {
       container.OriginTime = Earthquake[i].EarthquakeInfo.OriginTime;
       let index = Earthquake[i].ReportContent.length - 3;
       let level = Earthquake[i].ReportContent.substring(index, index + 1);
-      container.level = level + "級";
+      let magnitude = Earthquake[i].EarthquakeInfo.EarthquakeMagnitude.MagnitudeValue;
+      if (magnitude >= 6.5 && level >= 6) {
+        container.level = "🔴" + level + "級";
+      }
+      else if (magnitude >= 6.0 && level >= 5) {
+        container.level = "🟠" + level + "級";
+      }
+      else if (magnitude >= 5.5 && level >= 4) {
+        container.level = "🟡" + level + "級";
+      }
+      else {
+        container.level = "🟢" + level + "級";
+      }
       container.locatedetail = "地點：" + Earthquake[i].EarthquakeInfo.Epicenter.Location;
       container.depthdetail = "深度：" + Earthquake[i].EarthquakeInfo.FocalDepth + "km";
-      container.magnitudedetail = Earthquake[i].EarthquakeInfo.EarthquakeMagnitude.MagnitudeValue;
+      container.magnitudedetail = magnitude;
 
 
       let eqposition = {};
@@ -76,12 +101,13 @@ earthquake.sort(function (a, b) {
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 23.58, lng: 120.90 },
-    zoom: 7.5,
+    zoom: 7.2,
     mapTypeId: "terrain",
     disableDefaultUI: true,
     gestureHandling: "none",
     zoomControl: false,
   });
+
   const infoWindow = new google.maps.InfoWindow({
     content: "",
     disableAutoPan: true,
@@ -89,19 +115,37 @@ function initMap() {
 
   setTimeout(() => {
     for (let i = 0; i < earthquake.length; i++) {
-      const marker = new google.maps.Marker({
+      marker[i] = new google.maps.Marker({
         position: earthquake[i].epicenter,
+        animation: google.maps.Animation.DROP,
         map: map,
+      });
+      marker[i].addListener("click", function () {
+        toggleBounce(i);
       });
     }
   }, 1000);
 
+
 }
+
+function toggleBounce(i) {
+  for (let i = 0; i < marker.length; i++) {
+    marker[i].setAnimation(null);
+    document.getElementsByClassName("earthquakecontent")[i].style.backgroundColor = "#FFFFFF"
+  }
+  marker[i].setAnimation(google.maps.Animation.BOUNCE);
+  document.getElementsByClassName("earthquakecontent")[i].style.backgroundColor = "#fff3f5"
+}
+
 setTimeout(() => {
   for (let i = 0; i < earthquake.length; i++) {
 
     let tr = document.createElement("tr");
     tr.setAttribute("class", "earthquakecontent");
+    tr.addEventListener("click", function () {
+      toggleBounce(i);
+    });
     let tdtime = document.createElement("td");
     dateTime = earthquake[i].OriginTime;
     [date, time] = dateTime.split(" ");
@@ -114,22 +158,9 @@ setTimeout(() => {
     tdtime.appendChild(timep);
 
     let tdlevel = document.createElement("td");
-    tdlevel.setAttribute("class", "earthquakedetail");
     let dot = document.createElement("sapn");
     dot.setAttribute("id", "level");
     dot.textContent = earthquake[i].level;
-    if (earthquake[i].magnitudedetail < 5.5) {
-      dot.style.backgroundColor = "#b8dc7f"
-    }
-    else if (6.0 > earthquake[i].magnitudedetail >= 5.5) {
-      dot.style.backgroundColor = "#FFD24C"
-    }
-    else if (6.5 > earthquake[i].magnitudedetail >= 6.0) {
-      dot.style.backgroundColor = "#F1A661"
-    }
-    else if (earthquake[i].magnitudedetail >= 6.5) {
-      dot.style.backgroundColor = "#FF5D5D"
-    }
     tr.appendChild(tdlevel);
     tdlevel.appendChild(dot);
 
