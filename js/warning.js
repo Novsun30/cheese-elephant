@@ -31,7 +31,9 @@ fetch(url).then(function (response) {
       else {
         container.level = "🟢" + level + "級";
       }
-      container.locatedetail = "地點：" + Earthquake[i].EarthquakeInfo.Epicenter.Location;
+
+      container.locatedetail = "地點：" + Earthquake[i].EarthquakeInfo.Epicenter.Location.split('(位於')[1].replace(")", "");
+      container.positiondetail = "方位：" + Earthquake[i].EarthquakeInfo.Epicenter.Location.split('(')[0];
       container.depthdetail = "深度：" + Earthquake[i].EarthquakeInfo.FocalDepth + "km";
       container.magnitudedetail = magnitude;
 
@@ -73,7 +75,8 @@ fetch(bigurl).then(function (response) {
       else {
         container.level = "🟢" + level + "級";
       }
-      container.locatedetail = "地點：" + Earthquake[i].EarthquakeInfo.Epicenter.Location;
+      container.locatedetail = "地點：" + Earthquake[i].EarthquakeInfo.Epicenter.Location.split('(位於')[1].replace(")", "");
+      container.positiondetail = "方位：" + Earthquake[i].EarthquakeInfo.Epicenter.Location.split('(')[0];
       container.depthdetail = "深度：" + Earthquake[i].EarthquakeInfo.FocalDepth + "km";
       container.magnitudedetail = magnitude;
 
@@ -147,6 +150,7 @@ setTimeout(() => {
       toggleBounce(i);
     });
     let tdtime = document.createElement("td");
+    tdtime.setAttribute("class", "earthquaketime");
     dateTime = earthquake[i].OriginTime;
     [date, time] = dateTime.split(" ");
     let datep = document.createElement("p");
@@ -158,7 +162,7 @@ setTimeout(() => {
     tdtime.appendChild(timep);
 
     let tdlevel = document.createElement("td");
-    let dot = document.createElement("sapn");
+    let dot = document.createElement("span");
     dot.setAttribute("id", "level");
     dot.textContent = earthquake[i].level;
     tr.appendChild(tdlevel);
@@ -168,12 +172,15 @@ setTimeout(() => {
     tddetail.setAttribute("class", "earthquakedetail");
     let locatep = document.createElement("p");
     locatep.textContent = earthquake[i].locatedetail;
+    let positionp = document.createElement("p");
+    positionp.textContent = earthquake[i].positiondetail;
     let depthp = document.createElement("p");
     depthp.textContent = earthquake[i].depthdetail;
     let magnitudep = document.createElement("p");
     magnitudep.textContent = "地震規模：" + earthquake[i].magnitudedetail;
     tr.appendChild(tddetail);
     tddetail.appendChild(locatep);
+    tddetail.appendChild(positionp);
     tddetail.appendChild(depthp);
     tddetail.appendChild(magnitudep);
 

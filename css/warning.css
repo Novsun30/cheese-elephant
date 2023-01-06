@@ -3,6 +3,10 @@ td {
     padding: 10px;
 }
 
+.earthquaketime p {
+    font-size: 18px;
+}
+
 .section-warning {
     display: flex;
 }
@@ -19,6 +23,10 @@ td {
     height: 80vh;
     overflow: auto;
     overflow-x: hidden;
+}
+
+.earthquaketable {
+    width: 100%;
 }
 
 .earthquakebar {
@@ -39,6 +47,11 @@ td {
 .earthquakedetail {
     text-align: start;
     position: relative;
+}
+
+.earthquakedetail p {
+    line-height: 150%;
+    margin: 5px;
 }
 
 #level {
@@ -69,11 +82,11 @@ td {
 
     .mapcontainer {
         width: 100%;
-        margin: 15px;
+        margin-bottom: 20px;
     }
 
     .tablecontainer {
-        margin-left: 15px;
+        margin: auto;
         width: 100%;
         text-align: center;
         overflow: visible;
