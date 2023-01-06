@@ -4,10 +4,8 @@
     color: var(--main-font-color);
     font-size: 35px;
     font-weight: 700;
-    width: auto;
-    margin-right: 10%;
+    width: 18%;
 }
-
 
 .option_list {
     display: flex;
@@ -17,9 +15,16 @@
     border-radius: 3px;
 }
 
+.week_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
 .option {
     border: 1px solid var(--header-bg-color);
-    width: 300px;
+    width: 230px;
     font-size: 20px;
     text-align: center;
     padding: 10px;
@@ -29,6 +34,7 @@
 .option:hover {
     background-color: var(--header-bg-color);
     color: white;
+    cursor: pointer;
 }
 
 table {
@@ -67,11 +73,7 @@ td {
     margin-top: 30px;
 }
 
-@media screen and (max-width:1200px) {
-    .option {
-        width: 30%;
-    }
-}
+@media screen and (max-width:1200px) {}
 
 @media screen and (max-width:900px) {
     tr {
@@ -101,8 +103,14 @@ td {
         height: 40px;
     }
 
+    .option_list {
+        flex-direction: column;
+        margin: auto;
+    }
+
     .areaname {
-        margin-right: 5%;
+        margin-bottom: 10px;
+        width: auto;
     }
 }
 
@@ -117,6 +125,23 @@ td {
     }
 
     .areaname {
+        font-size: 30px;
+    }
+
+    .option {
+        font-size: 18px;
+        padding: 10px 20px;
+        width: auto;
+    }
+
+}
+
+@media screen and (max-width:400px) {
+    .areaname {
         font-size: 25px;
+    }
+
+    .option {
+        font-size: 14px;
     }
 }
