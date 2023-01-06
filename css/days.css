@@ -1,5 +1,154 @@
 /* 72小時 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
 
+#header-search-list li {
+    padding: 10px 15px;
+    margin: auto;
+    box-sizing: content-box;
+}
+
+.dateActive, .timeActive{
+    color: white;
+    background-color: var(--header-bg-color);
+    border-radius: 10px;
+    animation: 0.75s select-fade-in;
+}
+
+div.control-panel{
+    display: flex;
+    flex-direction: column;
+    border:  3px solid var(--nav-bg-color);
+    margin: -1px;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    
+}
+div.control-panel div.type{
+    display: flex;
+    border-bottom: 3px solid var(--nav-bg-color);
+    margin-bottom: -1px;
+}
+div.control-panel div.type h3{
+    flex: 1;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+}
+
+div.control-panel div.date{
+    display: flex;
+    margin: 1px 0;
+}
+div.control-panel div.date p{
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+div.control-panel div.date p:hover:not(.dateActive){
+    background-color: var(--nav-bg-color);
+    border-radius: 10px;
+    animation: 0.75s hover-fade-in;
+}
+div.control-panel div.time{
+    display: flex;
+}
+div.control-panel div.time p{
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+div.control-panel div.time p:hover:not(.timeActive){
+    background-color: var(--nav-bg-color) ;
+    border-radius: 10px;
+    animation: 0.75s hover-fade-in;
+}
+
+div.show-select-time{
+    padding: 20px 0;
+    margin: -1px;
+    border:  3px solid var(--nav-bg-color);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+div.show-select-time p{
+    padding: 10px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
+
+div.data-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+div.data-container div:nth-child(3),
+div.data-container div:nth-child(4),
+div.data-container div:nth-child(7),
+div.data-container div:nth-child(8),
+div.data-container div:nth-child(11),
+div.data-container div:nth-child(12),
+div.data-container div:nth-child(15),
+div.data-container div:nth-child(16),
+div.data-container div:nth-child(19),
+div.data-container div:nth-child(20){
+    background-color: #555;
+}
+div.data-container div.data{
+    width: 50%;
+    display: flex;
+    padding: 10px;
+    
+}
+div.data-container div.data div{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+div.data-container div.data div img{
+    width: 30px;
+    height: 30px;
+}
+
+div.data-container div.data div p{
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+@keyframes hover-fade-in{
+    from{
+        background-color: var(--main-bg-color);
+    }
+    to{
+        background-color: var(--nav-bg-color);
+    }
+}
+@keyframes select-fade-in{
+    from{
+        background-color: var(--main-bg-color);
+    }
+    to{
+        background-color: var(--header-bg-color);
+    }
+}
 
 @media screen and (max-width:1200px) {}
 
