@@ -19,7 +19,7 @@ html {
     background-color: var(--header-bg-color);
     border-radius: 10px;
     animation: 0.75s select-fade-in;
-    box-shadow: 0px 3px 2px 1px  #ddd;
+    box-shadow: 0px 2px 5px  #ddd;
 }
 
 div.control-panel{
@@ -93,7 +93,7 @@ div.show-select-time p{
     font-size: 22px;
     text-align: center;
     color: #fff;
-    text-shadow: #000 0px 0px 6px;
+    text-shadow: var(--main-font-color) 0px 0px 5px;
 }
 
 div.data-container{
@@ -104,25 +104,25 @@ div.data-container{
 
 }
 
-div.data-container div.data:nth-child(4),
 div.data-container div.data:nth-child(5),
 div.data-container div.data:nth-child(6),
-div.data-container div.data:nth-child(10),
-div.data-container div.data:nth-child(11),
-div.data-container div.data:nth-child(12),
+div.data-container div.data:nth-child(7),
+div.data-container div.data:nth-child(8),
+div.data-container div.data:nth-child(13),
+div.data-container div.data:nth-child(14),
+div.data-container div.data:nth-child(15),
 div.data-container div.data:nth-child(16),
-div.data-container div.data:nth-child(17),
-div.data-container div.data:nth-child(18),
+div.data-container div.data:nth-child(21),
 div.data-container div.data:nth-child(22){
     background-color: var(--nav-bg-color);
     border-radius: 10px;
     box-shadow: 3px 3px 4px 1px  #ddd;
 }
 div.data-container div.data{
-    width: 33%;
+    width: 23%;
     display: flex;
     padding: 10px;
-    margin: 1px;
+    margin: 5px;
 }
 div.data-container div.data div{
     width: 50%;
@@ -167,9 +167,9 @@ div.data-container div.data div p{
 @media screen and (max-width:900px) {
     div.data-container div.data:nth-child(5),
     div.data-container div.data:nth-child(6),
-    div.data-container div.data:nth-child(10),
-    div.data-container div.data:nth-child(17),
-    div.data-container div.data:nth-child(18),
+    div.data-container div.data:nth-child(13),
+    div.data-container div.data:nth-child(14),
+    div.data-container div.data:nth-child(21),
     div.data-container div.data:nth-child(22){
         background-color: var(--main-bg-color);
         box-shadow: none;
@@ -189,13 +189,13 @@ div.data-container div.data div p{
         border-radius: 10px;
     }
     div.data-container div.data{
-        width: 49%;
+        width: 45%;
     }
 }
 
 @media screen and (max-width:600px) {}
 
-@media screen and (max-width:450px) {
+@media screen and (max-width:500px) {
     div.data-container div.data:nth-child(1),
     div.data-container div.data:nth-child(3),
     div.data-container div.data:nth-child(7),
