@@ -1,9 +1,10 @@
 /* 72小時 */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -14,55 +15,64 @@ html {
     box-sizing: content-box;
 }
 
-.dateActive, .timeActive{
+.dateActive,
+.timeActive {
     color: white;
     background-color: var(--header-bg-color);
     border-radius: 10px;
     animation: 0.75s select-fade-in;
-    box-shadow: 0px 2px 5px  #ddd;
+    /* box-shadow: 0px 2px 5px #ddd; */
 }
 
-div.control-panel{
+div.control-panel {
     display: flex;
     flex-direction: column;
-    border:  3px solid var(--nav-bg-color);
+    border: 3px solid var(--nav-bg-color);
     margin: -1px;
     border-bottom: none;
     border-radius: 10px 10px 0 0;
-    box-shadow: 3px 3px 4px 1px  #ddd;
+    /* box-shadow: 3px 3px 4px 1px #ddd; */
 }
-div.control-panel div.type{
+
+div.control-panel div.type {
     display: flex;
     margin-bottom: -1px;
 }
-div.control-panel div.type h3{
+
+div.control-panel div.type h3 {
     flex: 1;
     font-size: 20px;
     font-weight: 600;
     text-align: center;
     padding: 10px;
+    background-color: var(--nav-bg-color);
+    color: var(--main-font-color);
 }
 
-div.control-panel div.date{
+div.control-panel div.date {
     display: flex;
     margin: 1px 0;
 }
-div.control-panel div.date p{
+
+div.control-panel div.date p {
     flex: 1;
     text-align: center;
     padding: 10px;
     font-size: 18px;
     cursor: pointer;
 }
-div.control-panel div.date p:hover:not(.dateActive){
+
+div.control-panel div.date p:hover:not(.dateActive) {
     background-color: var(--nav-bg-color);
     border-radius: 10px;
     animation: 0.75s hover-fade-in;
 }
-div.control-panel div.time{
+
+div.control-panel div.time {
     display: flex;
 }
-div.control-panel div.time p{
+
+div.control-panel div.time p {
     flex: 1;
     text-align: center;
     padding: 10px;
@@ -70,33 +80,32 @@ div.control-panel div.time p{
     cursor: pointer;
 }
 
-div.control-panel div.time p:hover:not(.timeActive){
-    background-color: var(--nav-bg-color) ;
+div.control-panel div.time p:hover:not(.timeActive) {
+    background-color: var(--nav-bg-color);
     border-radius: 10px;
     animation: 0.75s hover-fade-in;
 }
 
-div.show-select-time{
+div.show-select-time {
     padding: 20px 0;
     margin: 1px -1px -1px -1px;
-    border:  3px solid var(--nav-bg-color);
+    border: 3px solid var(--nav-bg-color);
     border-top: none;
-    border-radius: 0 0 10px 10px;   
-    background: linear-gradient(180deg, var(--main-bg-color) , var(--header-bg-color) );
-    box-shadow: 3px 3px 4px 1px  #ddd;
+    border-radius: 0 0 10px 10px;
+    background-color: var(--main-bg-color);
+    /* box-shadow: 3px 3px 4px 1px var(--main-bg-color); */
 }
 
-div.show-select-time p{
+div.show-select-time p {
     padding: 10px;
     width: 100%;
     font-weight: 800;
     font-size: 22px;
     text-align: center;
-    color: #fff;
-    text-shadow: var(--main-font-color) 0px 0px 5px;
+    color: var(--main-font-color);
 }
 
-div.data-container{
+div.data-container {
     display: flex;
     flex-wrap: wrap;
     margin: 30px 0;
@@ -113,67 +122,75 @@ div.data-container div.data:nth-child(14),
 div.data-container div.data:nth-child(15),
 div.data-container div.data:nth-child(16),
 div.data-container div.data:nth-child(21),
-div.data-container div.data:nth-child(22){
+div.data-container div.data:nth-child(22) {
     background-color: var(--nav-bg-color);
     border-radius: 10px;
-    box-shadow: 3px 3px 4px 1px  #ddd;
+    /* box-shadow: 3px 3px 4px 1px #ddd; */
 }
-div.data-container div.data{
+
+div.data-container div.data {
     width: 23%;
     display: flex;
     padding: 10px;
     margin: 5px;
 }
-div.data-container div.data div{
+
+div.data-container div.data div {
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-div.data-container div.data div img{
+
+div.data-container div.data div img {
     width: 30px;
     height: 30px;
 }
 
-div.data-container div.data div p{
+div.data-container div.data div p {
     margin-top: 5px;
     font-size: 18px;
 }
 
-@keyframes hover-fade-in{
-    from{
+@keyframes hover-fade-in {
+    from {
         background-color: var(--main-bg-color);
     }
-    to{
+
+    to {
         background-color: var(--nav-bg-color);
     }
 }
-@keyframes select-fade-in{
-    from{
+
+@keyframes select-fade-in {
+    from {
         background-color: var(--main-bg-color);
     }
-    to{
+
+    to {
         background-color: var(--header-bg-color);
     }
 }
 
 @media screen and (max-width:1200px) {
-    section.section-days{
+    section.section-days {
         width: 96%;
     }
 }
 
 @media screen and (max-width:900px) {
+
     div.data-container div.data:nth-child(5),
     div.data-container div.data:nth-child(6),
     div.data-container div.data:nth-child(13),
     div.data-container div.data:nth-child(14),
     div.data-container div.data:nth-child(21),
-    div.data-container div.data:nth-child(22){
+    div.data-container div.data:nth-child(22) {
         background-color: var(--main-bg-color);
         box-shadow: none;
     }
+
     div.data-container div.data:nth-child(3),
     div.data-container div.data:nth-child(4),
     div.data-container div.data:nth-child(7),
@@ -183,28 +200,36 @@ div.data-container div.data div p{
     div.data-container div.data:nth-child(15),
     div.data-container div.data:nth-child(16),
     div.data-container div.data:nth-child(19),
-    div.data-container div.data:nth-child(20){
+    div.data-container div.data:nth-child(20) {
         background-color: var(--nav-bg-color);
-        box-shadow: 3px 3px 4px 1px  #ddd;
+        /* box-shadow: 3px 3px 4px 1px #ddd; */
         border-radius: 10px;
     }
-    div.data-container div.data{
+
+    div.data-container div.data {
         width: 45%;
     }
 }
 
-@media screen and (max-width:600px) {}
+@media screen and (max-width:600px) {
+    .header-nav-link {
+        width: 120px;
+        height: 52px;
+    }
+}
 
 @media screen and (max-width:500px) {
+
     div.data-container div.data:nth-child(1),
     div.data-container div.data:nth-child(3),
     div.data-container div.data:nth-child(7),
     div.data-container div.data:nth-child(11),
     div.data-container div.data:nth-child(15),
-    div.data-container div.data:nth-child(19){
+    div.data-container div.data:nth-child(19) {
         background-color: var(--main-bg-color);
         box-shadow: none;
-    }   
+    }
+
     div.data-container div.data:nth-child(2),
     div.data-container div.data:nth-child(4),
     div.data-container div.data:nth-child(6),
@@ -215,12 +240,13 @@ div.data-container div.data div p{
     div.data-container div.data:nth-child(16),
     div.data-container div.data:nth-child(18),
     div.data-container div.data:nth-child(20),
-    div.data-container div.data:nth-child(22){
+    div.data-container div.data:nth-child(22) {
         background-color: var(--nav-bg-color);
         border-radius: 10px;
-        box-shadow: 3px 3px 4px 1px  #ddd;
+        /* box-shadow: 3px 3px 4px 1px #ddd; */
     }
-    div.data-container div.data{
+
+    div.data-container div.data {
         width: 95%;
     }
 }
