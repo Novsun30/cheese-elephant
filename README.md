@@ -14,6 +14,7 @@
 - [x] HTML
 - [x] CSS
 - [x] Javascript
+- [x] RWD
 - [x] [中央氣象局開放資料平臺之資料擷取API](https://opendata.cwb.gov.tw/dist/opendata-swagger.html#/)
 - [x] [Google Maps API](https://developers.google.com/maps/)
 ## UI
