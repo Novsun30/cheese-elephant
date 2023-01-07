@@ -25,22 +25,22 @@
   * 建置基礎專案
   * 主視覺定調
   * 統整網站 & 細節處理
-* [陳熹/MaoMaoYu76](https://github.com/MaoMaoYu76)
-  * 災害警報頁面
-  * 地震資料串接整理
-  * Google Map API 串接
-* [李育霖/Novsun30](https://github.com/Novsun30)
-  * 三日預報頁
-  * 每三小時天氣狀況資料串接整理
-  * 天氣圖片檔案整理
-* [沈采璇/jillshenshen](https://github.com/jillshenshen)
-  * 首頁
-  * 36小時天氣資料串接整理
-  * 臺灣地圖繪製
 * [林琮訓/stevenlin-TW](https://github.com/stevenlin-TW)
   * 天氣週報頁
   * 一週天氣與溫度資料整理
   * Canvas繪製折線圖
+* [陳熹/MaoMaoYu76](https://github.com/MaoMaoYu76)
+  * 災害警報頁面
+  * 地震資料串接整理
+  * Google Map API 串接
+* [沈采璇/jillshenshen](https://github.com/jillshenshen)
+  * 首頁
+  * 36小時天氣資料串接整理
+  * 臺灣地圖繪製
+* [李育霖/Novsun30](https://github.com/Novsun30)
+  * 三日預報頁
+  * 每三小時天氣狀況資料串接整理
+  * 天氣圖片檔案整理
 <a href="https://github.com/Pinkowo/cheese-elephant/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Pinkowo/cheese-elephant" />
 </a>
