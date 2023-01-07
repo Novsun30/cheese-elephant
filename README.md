@@ -1,7 +1,7 @@
 ![logo](https://github.com/Pinkowo/cheese-elephant/blob/main/intro/logo2.png)
-#### 網站url: <https://pinkowo.github.io/cheese-elephant/>
 ## 簡介
 起司大象的簡稱就是氣象，提供全臺灣各時段的溫度、降雨機率、紫外線及地震警報，以起司色為基底，設計出使用者友善的氣象查詢網站。
+> 傳送門: <https://pinkowo.github.io/cheese-elephant/>
 ## 網站架構
 * 首頁
 * 三日預報
