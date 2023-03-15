@@ -47,8 +47,13 @@
 
 ## 網站示意圖
 
+### 首頁
 ![home](https://github.com/Pinkowo/cheese-elephant/blob/main/intro/home.png)
+### 三日預報
 ![days](https://github.com/Pinkowo/cheese-elephant/blob/main/intro/days.png)
+### 天氣週報：一週天氣預報
 ![week-1](https://github.com/Pinkowo/cheese-elephant/blob/main/intro/week-1.png)
+### 天氣週報：一週溫度趨勢
 ![week-2](https://github.com/Pinkowo/cheese-elephant/blob/main/intro/week-2.png)
+### 災害警報
 ![warning](https://github.com/Pinkowo/cheese-elephant/blob/main/intro/warning.png)
